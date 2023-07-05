@@ -1,3 +1,2 @@
-# Sarah's Term Project
+# Sarah's Term Project Milestone 2
 
-Installation Instructions I followed can be found here: https://docs.docker.com/desktop/windows/wsl/
