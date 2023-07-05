@@ -47,7 +47,10 @@ def main():
     if st.button("Analyze"):
         if text.strip() != "":
             sentiment = analyze_sentiment(text, tokenizer, model)
+            confidence = result['score']
+            confidence_percentage = round(confidence * 100, 2)
             st.success(f"Sentiment: {sentiment}")
+            st.success(f"Confidence: {confidence_percentage}%")
         else:
             st.warning("You must enter text.")
 
