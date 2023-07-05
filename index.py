@@ -53,7 +53,7 @@ def main():
             st.success(f"Confidence: {confidence_percentage}%")
         else:
             st.warning("You must enter text.")
-
+ 
 
 if __name__ == "__main__":
     main()
