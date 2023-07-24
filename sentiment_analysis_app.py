@@ -8,7 +8,6 @@ def load_model(model_name):
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
     return tokenizer, model
 
-
 def analyze_sentiment(text, tokenizer, model):
     inputs = tokenizer.encode_plus(
         text,
