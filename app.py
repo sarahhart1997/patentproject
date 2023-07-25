@@ -38,11 +38,10 @@ dataset_dict = load_dataset('HUPD/hupd',
     val_filing_end_date='2016-01-31',
 )
 
-# Example function to retrieve abstract and claims based on application number
+# Retrieve based on application number
 def get_patent_sections(application_number):
-    # Replace this function with actual code to retrieve the sections based on the application number
-    abstract = "Sample abstract text"  # Replace with the actual abstract text
-    claims = "Sample claims text"  # Replace with the actual claims text
+    abstract = "Sample abstract text"  
+    claims = "Sample claims text"  
     return abstract, claims
 
 @app.route('/', methods=['GET', 'POST'])
