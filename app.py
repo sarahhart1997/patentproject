@@ -1,20 +1,9 @@
 from flask import Flask, render_template, request
 from transformers import BertTokenizer, TFBertForSequenceClassification
+from datasets import load_dataset
 import tensorflow as tf
 
 app = Flask(__name__)
-
-from datasets import load_dataset
-
-dataset_dict = load_dataset('HUPD/hupd',
-    name='sample',
-    data_files="https://huggingface.co/datasets/HUPD/hupd/blob/main/hupd_metadata_2022-02-22.feather", 
-    icpr_label=None,
-    train_filing_start_date='2016-01-01',
-    train_filing_end_date='2016-01-21',
-    val_filing_start_date='2016-01-22',
-    val_filing_end_date='2016-01-31',
-)
 
 # Load the pre-trained BERT model for sequence classification
 model = TFBertForSequenceClassification.from_pretrained('bert-base-uncased')
@@ -38,18 +27,36 @@ def patentability_score(abstract, claims):
 
     return patentability_score
 
+# Load the dataset
+dataset_dict = load_dataset('HUPD/hupd',
+    name='sample',
+    data_files="https://huggingface.co/datasets/HUPD/hupd/blob/main/hupd_metadata_2022-02-22.feather",
+    icpr_label=None,
+    train_filing_start_date='2016-01-01',
+    train_filing_end_date='2016-01-21',
+    val_filing_start_date='2016-01-22',
+    val_filing_end_date='2016-01-31',
+)
+
+# Example function to retrieve abstract and claims based on application number
+def get_patent_sections(application_number):
+    # Replace this function with actual code to retrieve the sections based on the application number
+    abstract = "Sample abstract text"  # Replace with the actual abstract text
+    claims = "Sample claims text"  # Replace with the actual claims text
+    return abstract, claims
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         application_number = request.form['application_number']
+
         # Retrieve patent sections (abstract and claims) based on the selected application number
+        abstract, claims = get_patent_sections(application_number)
 
         # Calculate the patentability score
-        abstract = "Sample abstract text"  # Replace with the actual abstract text
-        claims = "Sample claims text"  # Replace with the actual claims text
         score = patentability_score(abstract, claims)
 
-        return render_template('index.html', score=score)
+        return render_template('index.html', abstract=abstract, claims=claims, score=score)
     else:
         return render_template('index.html')
 
