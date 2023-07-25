@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sarah's Can You Patent This Application</title>
+</head>
+<body>
+    <h1>Patentability Score</h1>
+    <form method="POST" action="/">
+        <label for="application_number">Select Application Number:</label>
+        <select id="application_number" name="application_number">
+            <!-- Available application numbers to choose from -->
+            <option value="application_1">Application 1</option>
+            <option value="application_2">Application 2</option>
+            <!-- Add more options as needed -->
+        </select>
+        <br><br>
+        <h3>Abstract:</h3>
+        <textarea rows="10" cols="80" readonly>{{ abstract }}</textarea>
+        <br><br>
+        <h3>Claims:</h3>
+        <textarea rows="10" cols="80" readonly>{{ claims }}</textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if score %}
+        <h2>Patentability Score: {{ score }}</h2>
+    {% endif %}
+</body>
+</html>
