@@ -40,8 +40,8 @@ dataset_dict = load_dataset('HUPD/hupd',
 
 # Retrieve based on application number
 def get_patent_sections(application_number):
-    abstract = "Sample abstract text"  
-    claims = "Sample claims text"  
+    abstract = "Abstract text"  
+    claims = "Claims text"  
     return abstract, claims
 
 @app.route('/', methods=['GET', 'POST'])
