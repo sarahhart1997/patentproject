@@ -2,16 +2,68 @@
 <html>
 <head>
     <title>Sarah's Can You Patent This Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e225b; 
+            color: #ffffff; 
+            margin: 40px;
+        }
+
+        h1 {
+            color: #00bfff; 
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, select, textarea, input[type="submit"] {
+            margin: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        label {
+            color: #00bfff;
+            font-weight: bold;
+        }
+
+        select {
+            background-color: #af73ff;
+            color: #ffffff; 
+        }
+
+        textarea {
+            background-color: #af73ff;
+            color: #ffffff;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            background-color: #00bfff;
+            color: #ffffff; 
+            cursor: pointer;
+            width: 150px;
+        }
+
+        h2 {
+            color: #00bfff;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Patentability Score</h1>
     <form method="POST" action="/">
         <label for="application_number">Select Application Number:</label>
         <select id="application_number" name="application_number">
-            <!-- Available application numbers to choose from -->
             <option value="application_1">Application 1</option>
             <option value="application_2">Application 2</option>
-            <!-- Add more options as needed -->
         </select>
         <br><br>
         <h3>Abstract:</h3>
